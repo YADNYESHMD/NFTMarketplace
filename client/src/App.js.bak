@@ -1,0 +1,66 @@
+import React, { Component } from "react";
+import getWeb3 from "./getWeb3";
+import myToken from "./contracts/myToken.json"
+import Navbar from "./components/navbar/navbar.js";
+import Body from "./components/body/body.js";
+import Footer from "./components/footer/footer.js";
+
+import "./App.css";
+
+class App extends Component {
+	state = {loaded: false};
+
+
+
+	componentDidMount = async () => {
+		try {
+		// Get network provider and web3 instance.
+		this.web3 = await getWeb3();
+
+		// Use web3 to get the user's accounts.
+		this.accounts = await this.web3.eth.getAccounts();
+
+		//get contract instance
+		this.networkId = await this.web3.eth.net.getId();
+
+		this.tokenInstance = new this.web3.eth.Contract(
+		  myToken.abi,
+		  myToken.networks[this.networkId] && myToken.networks[this.networkId].address,
+		);
+
+        mint = (planet) => {
+        this.state.contract.methods.mint(planet).send({ from: this.state.account }) //.send() - writing data to blockchain
+            .once('receipt', (receipt) => {
+                this.setState({
+                    planets: [...this.state.planets, planet]
+                })
+            })
+    }
+
+		// Set web3, accounts, and contract to the state, and then proceed with an
+		// example of interacting with the contract's methods.
+		this.setState({loaded: true});
+		} catch (error) {
+			// Catch any errors for any of the above operations.
+			alert(
+				`Failed to load web3, accounts, or contract. Check console for details.`,
+			);
+			console.error(error);
+		}
+	};
+
+	render() {
+		if (!this.state.loaded) {
+			return <div>Loading Web3, accounts, and contract...</div>;
+		}
+		return (
+			<div className="App frontPage">
+				<Navbar />
+				<Body />
+				<Footer />
+			</div>
+		);
+	}
+}
+
+export default App;

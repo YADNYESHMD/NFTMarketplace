@@ -1,0 +1,238 @@
+html {
+    --color-primary: rebeccapurple;
+}
+
+.row {
+    justify-content: center;
+}
+
+.card {
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+}
+
+.card-width {
+    margin-right: 10px;
+    width: 17em;
+    flex: 0 0 !important;
+}
+
+.card-body, .card-text, .card-title, .card-group {
+    color: black;
+    text-align: left;
+}
+
+.bg-color {
+    background-color: var(--color-primary);
+}
+
+.card-body {
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-img-top {
+    height: 16vh;
+    width: auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.price-row {
+    justify-content: flex-end;
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.icon {
+    height: 36px;
+}
+
+.datetime {
+    font-size: 0.85em;
+    text-align: right;
+}
+
+.foot-of-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    font-weight: 600;
+}
+
+.token-id {
+    position: relative;
+    right: -0.95em;
+    top: 2.85em;
+    z-index: 2;
+    background-color: white;
+    width: fit-content;
+    color: black;
+    padding: 0.2em 0.5em;
+    border-radius: 0.2rem;
+}
+
+.minted-tokens {
+    margin: 0 5vw;
+}
+
+/* CSS for single minted token file */
+
+.token-details {
+    display: flex;
+    align-items: baseline;
+    padding: 0 2em;
+}
+
+.token-color {
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1em;
+    margin-right: 1em;
+    margin-bottom: 0.8em;
+    float: left;
+}
+
+.token-description {
+    text-align: left;
+}
+.token-description > p,
+.token-details > p {
+    color: white;
+    margin: 1em 0;
+}
+
+.token-image {
+    height: 30em;
+    margin: 0 auto;
+}
+
+.token-price {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.token-price-usd {
+    font-size: 0.9em;
+    position: relative;
+    top: 10px;
+    margin-left: 0.7em;
+}
+
+.token-name {
+    text-align: left;
+}
+
+.single-token-image {
+    height: 50vh;
+    width: 24em;
+    margin: 0 auto;
+    background-position: top;
+}
+
+.price-heading {
+    margin: 0.75em 0 0 0;
+}
+
+.price-card {
+    background-color: white;
+    border-radius: 0.3rem;
+    margin-right: 1em;
+}
+
+.description-holder {
+    background-color: white;
+    padding: 0.5em 0.8em;
+    width: 100%;
+    border-radius: 0.3em;
+}
+
+.description-button {
+    background-color: transparent;
+    color: black;
+    display: flex;
+    font-size: 1.2em;
+    margin-bottom: 0.3em;
+    padding-right: 70%;
+    cursor: pointer;
+    margin: 0;
+}
+
+.token-description {
+    color: black;
+    text-align: left;
+}
+
+.token-properties {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+    margin: 1em 1.5em;
+    text-align: left;
+}
+
+.token-properties p {
+    color: black;
+}
+
+.property-value {
+    text-align: right;
+}
+
+.description-body {
+    max-height: 140px;
+    overflow: auto;
+}
+
+/* -------------------------------- */
+
+/* Accordion Styles */
+
+.accordion {
+    width: 100%;
+}
+
+.accordion .fas {
+    color: #007bff;
+    min-width: 2em;
+    font-size: 1em;
+    text-align: left;
+}
+
+.accordion .card {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+}
+
+.accordion .card .card-header {
+    display: flex;
+    padding: 0.35rem 1.25rem;
+}
+
+.accordion .card .card-header > button {
+    padding-right: 60%;
+    padding-left: 0;
+    text-decoration: none;
+}
+
+.accordion .card .collapse .card-body {
+    display: block;
+}
+.detail{
+
+    margin: 100px;
+    width: 500px;
+    margin-left: 700px;
+
+}

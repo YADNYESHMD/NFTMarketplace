@@ -1,0 +1,33 @@
+.welcome-home {
+  margin: 0 22vw !important;
+}
+
+.card {
+  min-width: 200px;
+  margin: 15px;
+  background-color: transparent;
+}
+
+.card-header {
+  font-size: 20px;
+}
+
+.card-text {
+  text-align: left;
+}
+
+.bg-secondary {
+  background-color: #a6c !important;
+}
+
+a.card {
+  margin: 0 !important;
+  border: none !important;
+  background-color: transparent;
+}
+a {
+  text-decoration: none !important;
+}
+a:hover {
+  transform: scale(1.05);
+}

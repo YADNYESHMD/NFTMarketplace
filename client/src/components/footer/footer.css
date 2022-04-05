@@ -1,0 +1,19 @@
+.Footer {
+    background: #263832;
+    height: auto;
+    width: auto;
+} 
+
+p {
+    margin: 0;
+}
+
+.special-color-dark {
+    background-color: #263832;
+    position: static;
+}
+
+.fab {
+    font-size: 1.5rem;
+    margin: 0 12px;
+}

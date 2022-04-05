@@ -1,0 +1,103 @@
+.welcome {
+    margin: 0 12vw;
+    padding: 3em;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline !important;
+}    
+
+.btn-primary {
+    margin-top: 10px
+}
+
+.form-control {
+    border: none;
+}
+
+.custom-row {
+    display: flex;
+}
+
+.disabled-input {
+    width: 50px;
+    padding: 8px 15px;
+    font-size: 1.9em;
+    color: #555;
+    background-color: lightgrey;
+    border: none;
+    border-radius: 8px;
+    margin: 20px 10px 20px 0;
+}
+
+.ether-icon {
+    background-image: url(../../assets/ether.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.mint-form-image {
+    height: 20vh;
+    margin: 15px auto;
+    max-width: 20vw;
+}
+
+.mint-form-submit-btn {
+    width: 100%;
+    margin-top: 20px;
+}
+.MintButton{
+    width: 50%;
+    margin-top: 20px;
+    height: 50px;
+    border-radius: 20px;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 12px;
+    cursor: pointer;
+    border: 1px solid black;
+    width: max-content;
+    margin: auto;
+    background-color: black;
+    color: white;
+    border-radius: 0.3rem;
+}
+
+.custom-file-upload:hover {
+    background-color: darkslategrey;
+    color: black;
+    border: 1px solid darkslategrey;
+}
+
+.upload {
+    display: flex;
+}
+
+.fa-cloud-upload {
+    position: relative;
+    top: 5px;
+    margin-right: 10px;
+}
+
+.custom-margin {
+    margin: 20px 0;
+}

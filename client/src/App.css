@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+* {
+	margin: 0;
+	padding: 0;
+	transition: all 200ms ease-out;
+}
+
+body, html {
+	font-family: Ubuntu;
+	color: white;
+}
+
+button {
+	border: none;
+}
+
+.App {
+  	text-align: center;
+	min-height: 100%;
+	display: grid;
+	grid-template-rows: 76px auto 1fr auto;
+    grid-template-columns: 100%;
+	background-image: url(./assets/universe.jpg);
+    background-size: cover;
+	background-position: left;
+	background-repeat: no-repeat;	
+	
+}
+
+@font-face {
+	font-family: Primary;
+	src: url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+}
+
+.link-bar {
+	padding: 10px 0;
+}
+.nav-link {
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+}
+.nav-link a {
+	padding: 20.8px 30px !important;
+	color: white !important;
+	text-decoration: none;
+}
+
+/* ---------------------Scrollbar styling------------------------- */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+	background-color: transparent;
+}
+
+/* Track 
+::-webkit-scrollbar-track 
+} */
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 40px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+/* ---------------------------------------------------- */
+/* Global CSS */
+
+.head {
+    margin-bottom: 2rem;
+}
+
+.is-active {
+	background-color: #343A80;
+}
+
+/* Loading spinner */
+.lds-ring {
+    display: flex;
+    transform: scale(0.4);
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,11 @@
+select, option {
+    color: black;
+}
+
+.transfer-submit-btn {
+    margin: 0;
+}
+
+.custom-width {
+    width: 35vw;
+}
