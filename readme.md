@@ -36,7 +36,7 @@ This app uses React, Solidity, Web3, MongoDB and NodeJS
 - Download the project 
 - Next, do this 
 1. At Root : Do `npm install`
-2. At serve dir: Do `npm install`
+2. At server dir: Do `npm install`
 3. At client dir: Do `npm install`
  - **You need to add your API Key details for Firebase storage to work**
  - Please refer to the following [docs](https://firebase.google.com/docs/storage/web/start) to retrieve your firebase code
