@@ -60,22 +60,22 @@ class App extends Component {
 
     //loading contracts
     const networkId = await web3.eth.net.getId();
-    const networkData = myToken.networks[networkId]; //myToken is contract
+    //const networkData = myToken.networks[networkId]; //myToken is contract
 
-    if (networkData) {
-      const abi = myToken.abi;
-      const address = networkData.address;
-      const contract = new web3.eth.Contract(abi, address);
-      this.setState({ contract: contract }); //this.setState({ contract}) //ES6
+    // if (networkData) {
+    //   const abi = myToken.abi;
+    //   const address = networkData.address;
+    //   const contract = new web3.eth.Contract(abi, address);
+    //   this.setState({ contract: contract }); //this.setState({ contract}) //ES6
 
-       //.call() is used to read data from blockchain
+    //    //.call() is used to read data from blockchain
      
 
-      // load colors => ref. test case
+    //   // load colors => ref. test case
       
-    } else {
-      window.alert("Smart contract not deployed to detected network");
-    }
+    // } else {
+    //   window.alert("Smart contract not deployed to detected network");
+    // }
   }
   //mint function from contract call
   //mintToken = () => { };
