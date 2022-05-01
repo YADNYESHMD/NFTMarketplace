@@ -34,7 +34,9 @@ contract myToken is ERC1155 {
     mapping(string => bool) NFT_Exists;
 
     //Constructor
-    constructor(string memory uri) ERC1155(""){}
+    constructor() ERC1155("Yadnyesh"){
+
+    }
 
     //function mint()
     function mintNFTS

@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 
 // contract import
-
+import myToken from "./contracts/myToken.json";
 
 // import components
 import Navbar from "./components/navbar/navbar.js";
@@ -60,39 +60,37 @@ class App extends Component {
 
     //loading contracts
     const networkId = await web3.eth.net.getId();
-    //const networkData = myToken.networks[networkId]; //myToken is contract
+    const networkData = myToken.networks[networkId]; //myToken is contract
 
-    // if (networkData) {
-    //   const abi = myToken.abi;
-    //   const address = networkData.address;
-    //   const contract = new web3.eth.Contract(abi, address);
-    //   this.setState({ contract: contract }); //this.setState({ contract}) //ES6
+    if (networkData) {
+      const abi = myToken.abi;
+      const address = networkData.address;
+      const contract = new web3.eth.Contract(abi, address);
+      this.setState({ contract: contract }); //this.setState({ contract}) //ES6
 
-    //    //.call() is used to read data from blockchain
+      // .call() is used to read data from blockchain
      
 
-    //   // load colors => ref. test case
+      // load colors => ref. test case
       
-    // } else {
-    //   window.alert("Smart contract not deployed to detected network");
-    // }
+    } else {
+      window.alert("Smart contract not deployed to detected network");
+    }
   }
-  //mint function from contract call
-  //mintToken = () => { };
+    //mint function from contract call
+    mintToken = () => { };
 
 
-  //buy function from contract call
-  // buy = () => { };
+    //buy function from contract call
+    buy = () => { };
 
-  // transfer function from contract call for sell& receive
-  // transferToken = () => {};
+    // transfer function from contract call for sell& receive
+    transferToken = () => {};
 
-  //burn function from contract call
-  // burnToken = ()=> {};
+    //burn function from contract call
+    burnToken = ()=> {};
 
-  // countClicks = () => {
-    
-  // };
+    countClicks = () => {};
 
   constructor(props) {
     super(props);
