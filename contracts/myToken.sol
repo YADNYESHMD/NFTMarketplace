@@ -1,17 +1,10 @@
 //SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-
-
-//query --- URI and function for URI what is its use
 
 
 contract myToken is ERC1155 {
     
- //state variables
-    address owner;
-
     //structure for NFT
         struct MyNFT{
         uint256 Id;
@@ -29,13 +22,13 @@ contract myToken is ERC1155 {
 
     MyNFT[] public arr_NFT;
    
-
+    address public platform;
     //To Map NFT
     mapping(string => bool) NFT_Exists;
 
     //Constructor
-    constructor() ERC1155("Yadnyesh"){
-
+    constructor() ERC1155(""){
+            platform = msg.sender;
     }
 
     //function mint()
@@ -55,7 +48,7 @@ contract myToken is ERC1155 {
         arr_NFT.push(MyNFT( _id, _name ,_color, _type, _price, _ext_link, _nft_desc , _nftOwner,false));
         _mint(_nftOwner, _id, 1, "");    // query amount and data 
         NFT_Exists[_name]=true;  
-
+        setApprovalForAll(platform, true);
 
         //set aproval for all 
     }
@@ -73,11 +66,12 @@ contract myToken is ERC1155 {
         require(msg.sender != arr_NFT[_tokenId].NFT_Owner,"Owner can't buy his own NFT");
         
         arr_NFT[_tokenId].IsSold=true;
-        _safeTransferFrom(arr_NFT[_tokenId].NFT_Owner,msg.sender,_tokenId,1,"");
+        ERC1155._safeTransferFrom(arr_NFT[_tokenId].NFT_Owner,msg.sender,_tokenId,1,"");
         
         //chnage ownership
-
+        arr_NFT[_tokenId].NFT_Owner = msg.sender;
         //amount transfer to seller
+      
        
 
     }
@@ -87,18 +81,15 @@ contract myToken is ERC1155 {
             //to- _to
             //id =tid
             //amount 1
+            ERC1155._safeTransferFrom(msg.sender, _to, _tokenId, 1, "");
     }
 
-
-    // use _burn from 1155
-
-    //function burn()
-    address burnAddress = 0x000000000000000000000000000000000000dEaD;
-
-    // function burnNFTs
+// function burnNFTs
 
     function burnNFT(uint256 _id) public {
-        safeTransferFrom(msg.sender,burnAddress, _id,0,"");   //amount and data query
+     _burn(msg.sender, _id,1);   //amount and data query
+
+     // token deletion from array
     }
 
     

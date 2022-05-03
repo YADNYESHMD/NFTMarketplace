@@ -66,6 +66,8 @@ class App extends Component {
       const abi = myToken.abi;
       const address = networkData.address;
       const contract = new web3.eth.Contract(abi, address);
+      console.log("This is Contract")
+      console.log(contract)
       this.setState({ contract: contract }); 
       const totalSupply = await contract.methods.getTokenCount().call(); //.call() is used to read data from blockchain
       this.setState({ totalSupply: totalSupply });
@@ -88,12 +90,31 @@ class App extends Component {
   }
     //mint function from contract call
     mintToken = (Name, Color, FontColor, Description,nftType ,TokenURI,fileName, Price, DateTime) => {
-      this.state.contract.methods.mintNFTS(Name,Color,nftType,TokenURI,Description,Price).send({from:this.state.account});
+      this.state.contract.methods.mintNFTS(Name,Color,nftType,TokenURI,Description,Price).send({from:this.state.account}).once("receipt", (receipt) => {
+        let token = {
+          id: this.state.totalSupply,
+          name: Name,
+          color: Color,
+          fontColor: FontColor,
+          description: Description,
+          tokenURI: TokenURI,
+          fileName: fileName,
+          price: Price,
+          dateTime: DateTime,
+          to: this.state.account,
+        };
+        this.setState({
+          tokens: [...this.state.tokens, token],
+          totalSupply: parseInt(this.state.totalSupply) + 1,
+        });
+      });
     };
 
-
+    
     //buy function from contract call
-    buy = () => { };
+    buy = () => { 
+      this.state.contract.methods.BuyToken().send({from:this.state.account})
+    };
 
     // transfer function from contract call for sell& receive
     transferToken = () => {};
