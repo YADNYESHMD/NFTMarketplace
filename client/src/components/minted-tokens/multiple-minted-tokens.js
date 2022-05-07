@@ -64,7 +64,11 @@ class MultipleMintedTokens extends React.Component {
                                         <div></div>
                                     </div>
                         }
+                        // console.log(token)
+                        console.log(this.props.tokens)
+                        // console.log(this.props.account)
                         if(token.to == this.props.account) {
+                            console.log("I am in if")
                             token.name.length >= 17 ? name = token.name.slice(0,17) + '...' : name = token.name
                             token.description.length >= 24 ? description = token.description.slice(0,24) + '...' : description = token.description
                             

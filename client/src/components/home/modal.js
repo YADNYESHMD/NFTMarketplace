@@ -28,7 +28,7 @@ export default function FormDialog(props) {
         window.web3 = new Web3(window.ethereum);
         var et = window.web3.utils.toWei(props.token.price,'ether')  
 
-        props.buy(props.token.to,props.token.id)        
+        props.buy(props.token.id)        
         window.web3.eth.sendTransaction({from:props.account,to:props.token.to,value:et});
       };
       console.log(props)

@@ -12,7 +12,7 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import cors from "cors";
 import Collection from "../collection/collection";
- import Detailmodal from "./modal.js";
+import Detailmodal from "./modal.js";
 
 import { margin } from "@mui/system";
 
@@ -23,8 +23,8 @@ class Home extends React.Component {
       token: {},
       openModal: false,
       urlImgs: [],
-      collection:"",
-      nfttype:'',
+      collection: "",
+      nfttype: '',
       ethPrice: 0,
     };
   }
@@ -34,7 +34,7 @@ class Home extends React.Component {
     } else {
       const ref = firebase.storage().ref("token/" + fileName);
       const url = await ref.getDownloadURL();
-      console.log("in here",this.props.account);
+      console.log("in here", this.props.account);
       return url;
     }
   }
@@ -45,7 +45,7 @@ class Home extends React.Component {
     this.setState({ openModal: true, token: token });
   };
 
-  onCloseModal = () => {  
+  onCloseModal = () => {
 
     this.setState({ openModal: false });
   };
@@ -82,9 +82,9 @@ class Home extends React.Component {
       .catch((err) => console.log(err));
   };
 
-  changeSelectOptionHandler=(event)=>{
-   let ty = event.target.value
-    this.setState({nfttype : ty});
+  changeSelectOptionHandler = (event) => {
+    let ty = event.target.value
+    this.setState({ nfttype: ty });
     console.log(this.state)
 
   }
@@ -93,36 +93,39 @@ class Home extends React.Component {
 
     return (
       <div class="welcome minted-tokens ">
-          <div>
+        <div>
           {/* <label
       style={{"margin-right":1100,"margin-top":10}}
       >Collections</label> */}
-      <label
-      style={{"margin-right":1110,"margin-top":10}}
-      ></label>
-        <select 
-                type="text"
-                 ref={(input) => { this.nftType = input }} 
-                 class=" form-control-lg custom-margin" 
-                 style={{"margin-right":1100,"margin-top":0, color:"chocolate",
-                 width:170, height:50,
-                 "fontSize":18,
-                 "font-family": 'inherit',"border-radius": 10,
-                backgroundColor:"whitesmoke"}}
-                 onChange={this.changeSelectOptionHandler}
-                   placeholder="search Type" required>
-                        <option >Explore</option>
-                        <option>All</option>
-                        <option>Sports</option>
-                        <option>Art</option>
-                        <option>TradingCards</option>
-                        <option>Photography</option>
-         </select>
-        
-         </div>
-         
+          <label
+            style={{ "margin-right": 1110, "margin-top": 10 }}
+          ></label>
+          <select
+            type="text"
+            ref={(input) => { this.nftType = input }}
+            class=" form-control-lg custom-margin"
+            style={{
+              "margin-right": 1100, "margin-top": 0, color: "chocolate",
+              width: 170, height: 50,
+              fontSize: 18,
+              fontFamily: 'inherit',
+              borderRadius: 10,
+              backgroundColor: "whitesmoke"
+            }}
+            onChange={this.changeSelectOptionHandler}
+            placeholder="search Type" required>
+            <option >Explore</option>
+            <option>All</option>
+            <option>Sports</option>
+            <option>Art</option>
+            <option>TradingCards</option>
+            <option>Photography</option>
+          </select>
 
-        <div class="row" style={{"margin-left":100}}>
+        </div>
+
+
+        <div class="row" style={{ "margin-left": 100 }}>
 
           {this.props.tokens.map((token, key) => {
             let name = "",
@@ -154,72 +157,22 @@ class Home extends React.Component {
                 </div>
               );
             }
-            if( token.to != this.props.account &&
-              token.to != "0x0000000000000000000000000000000000000000" && token.bought == false||
-              token.to ==''){
-            if (
-              token.nftType==this.state.nfttype 
-
-            ) {
-              token.name.length >= 17
-                ? (name = token.name.slice(0, 17) + "...")
-                : (name = token.name);
-              token.description.length >= 24
-                ? (description = token.description.slice(0, 24) + "...")
-                : (description = token.description);
-
-              return (
-                <div onClick={this.onClickButton.bind(this, token, urlImgs[key])} style={{"margin-right":20}}>
-
-                  {/* <button >a</button> */}
-
-                  <div class="token-id">{token.id}</div>
-                  <div class="card card-width">
-                    <div
-                      class="card-img-top"
-                      style={{
-                        backgroundColor: "#" + token.color,
-                      }}
-                    >
-                      {loader}
-                    </div>
-                    <h5
-                      class="card-header"
-                      style={{
-                        backgroundColor: "#" + token.color,
-                        color: "#" + token.fontColor,
-                      }}
-                    >
-                      {name}
-                    </h5>
-                    <div class="card-body">
-                      <p class="card-text">{description}</p>
-                      <div class="foot-of-card">
-                        <span class="row price-row">
-                          <img src={ether} alt="ether" class="icon" />
-                          <p class="card-text">{token.price}</p>
-                        </span>
-                        <p class="card-text datetime">{token.dateTime}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-             }
-            
-              {
+            if (token.to != this.props.account &&
+              token.to != "0x0000000000000000000000000000000000000000" && token.bought == false ||
+              token.to == '') {
+              if (token.nftType == this.state.nfttype) {
                 token.name.length >= 17
                   ? (name = token.name.slice(0, 17) + "...")
                   : (name = token.name);
                 token.description.length >= 24
                   ? (description = token.description.slice(0, 24) + "...")
                   : (description = token.description);
-  
+
                 return (
-                  <div onClick={this.onClickButton.bind(this, token, urlImgs[key])} style={{"margin-right":20}}>
-  
+                  <div onClick={this.onClickButton.bind(this, token, urlImgs[key])} style={{ "margin-right": 20 }}>
+
                     {/* <button >a</button> */}
-  
+
                     <div class="token-id">{token.id}</div>
                     <div class="card card-width">
                       <div
@@ -253,10 +206,57 @@ class Home extends React.Component {
                   </div>
                 );
               }
-            
-          } 
+
+              {
+                token.name.length >= 17
+                  ? (name = token.name.slice(0, 17) + "...")
+                  : (name = token.name);
+                token.description.length >= 24
+                  ? (description = token.description.slice(0, 24) + "...")
+                  : (description = token.description);
+
+                return (
+                  <div onClick={this.onClickButton.bind(this, token, urlImgs[key])} style={{ "margin-right": 20 }}>
+
+                    {/* <button >a</button> */}
+
+                    <div class="token-id">{token.id}</div>
+                    <div class="card card-width">
+                      <div
+                        class="card-img-top"
+                        style={{
+                          backgroundColor: "#" + token.color,
+                        }}
+                      >
+                        {loader}
+                      </div>
+                      <h5
+                        class="card-header"
+                        style={{
+                          backgroundColor: "#" + token.color,
+                          color: "#" + token.fontColor,
+                        }}
+                      >
+                        {name}
+                      </h5>
+                      <div class="card-body">
+                        <p class="card-text">{description}</p>
+                        <div class="foot-of-card">
+                          <span class="row price-row">
+                            <img src={ether} alt="ether" class="icon" />
+                            <p class="card-text">{token.price}</p>
+                          </span>
+                          <p class="card-text datetime">{token.dateTime}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
+            }
           })}
-        
+
           <div>
             <Detailmodal
               account={this.props.account}

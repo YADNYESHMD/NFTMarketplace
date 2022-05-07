@@ -16,7 +16,7 @@ import Home from "./components/home/home.js";
 import Mint from "./components/mint/mint.js";
 import Burn from "./components/burn/burn.js";
 import Recieve from "./components/recieve/recieve.js";
-import  Collection from "./components/collection/collection.js";
+import Collection from "./components/collection/collection.js";
 import Transfer from "./components/transfer/transfer.js";
 import MintedTokens from "./components/minted-tokens/minted-tokens.js";
 import Footer from "./components/footer/footer.js";
@@ -25,6 +25,8 @@ import Footer from "./components/footer/footer.js";
 import "./App.css";
 
 class App extends Component {
+
+
   async componentWillMount() {
     await this.loadWeb3();
     await this.loadBlockchainData();
@@ -68,7 +70,7 @@ class App extends Component {
       const contract = new web3.eth.Contract(abi, address);
       console.log("This is Contract")
       console.log(contract)
-      this.setState({ contract: contract }); 
+      this.setState({ contract: contract });
       const totalSupply = await contract.methods.getTokenCount().call(); //.call() is used to read data from blockchain
       this.setState({ totalSupply: totalSupply });
 
@@ -80,49 +82,53 @@ class App extends Component {
         });
       }
       // .call() is used to read data from blockchain
-     
+
 
       // load colors => ref. test case
-      
+
     } else {
       window.alert("Smart contract not deployed to detected network");
     }
   }
-    //mint function from contract call
-    mintToken = (Name, Color, FontColor, Description,nftType ,TokenURI,fileName, Price, DateTime) => {
-      this.state.contract.methods.mintNFTS(Name,Color,nftType,TokenURI,Description,Price).send({from:this.state.account}).once("receipt", (receipt) => {
-        let token = {
-          id: this.state.totalSupply,
-          name: Name,
-          color: Color,
-          fontColor: FontColor,
-          description: Description,
-          tokenURI: TokenURI,
-          fileName: fileName,
-          price: Price,
-          dateTime: DateTime,
-          to: this.state.account,
-        };
-        this.setState({
-          tokens: [...this.state.tokens, token],
-          totalSupply: parseInt(this.state.totalSupply) + 1,
-        });
+  //mint function from contract call
+  mintToken = (Name, Color, FontColor, Description, nftType, TokenURI, fileName, Price, DateTime) => {
+    this.state.contract.methods.mintNFTS(Name, Color,FontColor, nftType, TokenURI, Description,DateTime, fileName, Price).send({ from: this.state.account }).once("receipt", (receipt) => {
+      let token = {
+        id: this.state.totalSupply,
+        name: Name,
+        color: Color,
+        nftType : nftType,
+        fontColor: FontColor,
+        description: Description,
+        tokenURI: TokenURI,
+        fileName: fileName,
+        price: Price,
+        dateTime: DateTime,
+        to: this.state.account,
+      };
+      this.setState({
+        tokens: [...this.state.tokens, token],
+        totalSupply: parseInt(this.state.totalSupply) + 1,
       });
-    };
+    });
+  };
 
+  //buy function from contract call
+  buy = (id) => {
+    this.state.contract.methods.BuyToken(id).send({from: this.state.account})
     
-    //buy function from contract call
-    buy = () => { 
-      this.state.contract.methods.BuyToken().send({from:this.state.account})
-    };
+  };
 
-    // transfer function from contract call for sell& receive
-    transferToken = () => {};
+  // transfer function from contract call for sell& receive
+  transferToken = () => { };
 
-    //burn function from contract call
-    burnToken = ()=> {};
+  //burn function from contract call
+  burnToken = (id) => { 
+    this.state.contract.methods.burnNFT(id).send({from: this.state.account})
+  };
 
-    countClicks = () => {};
+  countClicks = () => { };
+
 
   constructor(props) {
     super(props);
@@ -135,6 +141,7 @@ class App extends Component {
       devs: false,
     };
   }
+
 
   render() {
     return (
@@ -150,7 +157,7 @@ class App extends Component {
                 <NavLink exact to={"/"} activeClassName="is-active">
                   {" "}
                   Home{" "}
-                  
+
                 </NavLink>
               </li>
               <li class="nav-link">
