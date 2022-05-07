@@ -112,7 +112,7 @@ contract myToken is ERC1155 {
 
         // token deletion from array
         arr_NFT[_id] = arr_NFT[arr_NFT.length - 1];
-        arr_NFT.pop();
         arr_NFT[_id].id = _id;
+        arr_NFT.pop();
     }
 }
