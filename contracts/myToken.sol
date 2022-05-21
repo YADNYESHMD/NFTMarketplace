@@ -107,12 +107,17 @@ contract myToken is ERC1155 {
     // function burnNFTs
 
     function burnNFT(uint256 _id) public {
+        require(_id<arr_NFT.length,"Array index out of bound");
         _burn(msg.sender, _id, 1);
         //amount and data query
-
+                                
         // token deletion from array
-        arr_NFT[_id] = arr_NFT[arr_NFT.length - 1];
-        arr_NFT[_id].id = _id;
+        for(uint256 i = _id;i<arr_NFT.length-1;i++)
+        {
+                arr_NFT[i] = arr_NFT[i+1];
+        }
         arr_NFT.pop();
+        for(uint256 i =0 ; i<arr_NFT.length;i++)
+        arr_NFT[i].id = i;
     }
 }
