@@ -3,13 +3,13 @@ import 'firebase/storage'
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-    apiKey: "AIzaSyCvotygQoyM1VZMXDgQAAgFZ-BFeS3Vkws",
-    authDomain: "nftmarket-bed34.firebaseapp.com",
-    projectId: "nftmarket-bed34",
-    storageBucket: "nftmarket-bed34.appspot.com",
-    messagingSenderId: "20741901392",
-    appId: "1:20741901392:web:86cd8c437940dd94a39555",
-    measurementId: "G-8D0MXP19YP"
+    apiKey: "AIzaSyCfsHpTiYbDlRtTLSaZNl73J6i1z99JXVs",
+    authDomain: "nft14-278cc.firebaseapp.com",
+    projectId: "nft14-278cc",
+    storageBucket: "nft14-278cc.appspot.com",
+    messagingSenderId: "671270961546",
+    appId: "1:671270961546:web:8935f03531b5e4ef268873",
+    measurementId: "G-91J6BVRWE0"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
